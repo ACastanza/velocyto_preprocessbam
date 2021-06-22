@@ -15,6 +15,9 @@ RUN apt-get install libhdf5-serial-dev --yes
 # RUN apt-get install libigraph0-dev --yes #This should install automatically with python-igraph as the repo version fails
 RUN apt-get install libxml2-dev --yes
 
+# Install samtools
+RUN apt-get install samtools --yes
+
 # install python with conda
 RUN mkdir /conda && \
     cd /conda && \
@@ -38,7 +41,7 @@ RUN pip install velocyto
 
 # copy module files
 COPY src/* /src/
-RUN chmod a+x /src/compute_scvelo.py
+RUN chmod a+x /src/preprocess.sh
 
 # display software versions
 RUN python --version
